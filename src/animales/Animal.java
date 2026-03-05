@@ -56,10 +56,19 @@ public abstract class Animal {
         }
     }
 
+    /**
+     * obtiene el codigo identificativo del animal
+     * @return String con el codigo de 5 caracteres 
+     */
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * establece el codigo del animal
+     * @param codigo Cadena de 5 caracteres (numeros o letras minusculas)
+     * @throws IllegalArgumentException si no cumple con el formato definido
+     */
     public void setCodigo(String codigo) {
         if (!codigo.matches("[0-9a-z]{5}")) {
             throw new IllegalArgumentException();
@@ -68,10 +77,19 @@ public abstract class Animal {
         }
     }
 
+    /**
+     * obtiene el fecha de nacimiento del animal
+     * @return Objeto LocalDate con la fecha
+     */
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
+    /**
+     * Establece la fecha de nacimiento del animal
+     * @param fechaNacimiento Cadena en formato ISO-8601 (yyyy-MM-dd)
+     * @throws IllegalArgumentException si el formato de fecha es incorrecto
+     */
     public void setFechaNacimiento(String fechaNacimiento) {
         LocalDate fecha;
 
@@ -84,10 +102,21 @@ public abstract class Animal {
         this.fechaNacimiento = fecha;
     }
 
+    
+    /**
+     * obtiene el sexo del animal
+     * @return caracter "M" si es hembra o "H" si es macho
+     */
     public char getSexo() {
         return sexo;
     }
 
+    
+    /**
+     * establece el sexo del animal
+     * @param sexo carácter "M" para hembra o "H" para macho
+     * @throws IllegalArgumentException si el sexo no es M o H
+     */
     public void setSexo(char sexo) {
         if ((sexo != 'M' && sexo != 'H')) {
             throw new IllegalArgumentException();
@@ -96,10 +125,20 @@ public abstract class Animal {
         }
     }
 
+    /**
+     * obtiene el peso del animal
+     * @return  valor numérico del peso en kg
+     * 
+     */
     public double getPeso() {
         return peso;
     }
 
+    /**
+     * establece el peso del animal
+     * @param peso Valor numérico positivo en kilogramos.
+     * @throws IllegalArgumentException si el peso es igual o menor a cero.
+     */
     public void setPeso(double peso) {
         if (peso <= 0) {
             throw new IllegalArgumentException();
@@ -108,6 +147,11 @@ public abstract class Animal {
         }
     }
 
+    
+    /**
+     * Genera un valor hash para el objeto basado en sus atributos.
+     * @return Valor entero del hash.
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -118,6 +162,12 @@ public abstract class Animal {
         return hash;
     }
 
+    
+    /**
+     * Compara si este animal es igual a otro objeto.
+     * @param obj Objeto a comparar.
+     * @return true si los atributos coinciden, false en caso contrario.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -145,6 +195,11 @@ public abstract class Animal {
         return true;
     }
 
+    
+    /**
+     * Devuelve una representación en cadena de texto del objeto Animal
+     * @return String con los detalles del código, fecha, sexo y peso
+     */
     @Override
     public String toString() {
         return "Animal{" + "codigo=" + codigo + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", peso=" + peso + '}';
